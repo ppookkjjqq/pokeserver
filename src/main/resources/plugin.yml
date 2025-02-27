@@ -1,0 +1,4 @@
+name: pokeserver
+version: '${project.version}'
+main: ppookkjjqq.pokeserver.Pokeserver
+api-version: '1.16'
