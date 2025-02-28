@@ -1,6 +1,7 @@
 package ppookkjjqq.pokeserver;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import ppookkjjqq.pokeserver.commands.givemoney;
 import ppookkjjqq.pokeserver.commands.moneyset;
 import ppookkjjqq.pokeserver.commands.moneyup;
 
@@ -15,6 +16,10 @@ public final class Pokeserver extends JavaPlugin {
         saveConfig();
         getServer().getPluginCommand("moneyup").setExecutor(new moneyup(this));
         getServer().getPluginCommand("moneyset").setExecutor(new moneyset(this));
+        getServer().getPluginCommand("givemoney").setExecutor(new givemoney(this));
+        scoreboardmanager scoreboardmanager = new scoreboardmanager(this);
+        getServer().getPluginManager().registerEvents(new scoreboardlistener(scoreboardmanager,this), this);
+
         // Plugin startup logic
 
     }

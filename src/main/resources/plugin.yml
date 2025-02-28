@@ -8,3 +8,6 @@ commands:
 
   moneyset:
     description: a2
+
+  givemoney:
+    description: a3
