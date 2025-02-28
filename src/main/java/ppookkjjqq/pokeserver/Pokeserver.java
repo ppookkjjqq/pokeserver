@@ -1,19 +1,18 @@
 package ppookkjjqq.pokeserver;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import ppookkjjqq.pokeserver.controller.UserConnectionController;
-import ppookkjjqq.pokeserver.controller.UserManagementController;
+import ppookkjjqq.pokeserver.commands.moneyup;
 
 public final class Pokeserver extends JavaPlugin {
 
     private static Pokeserver serverInstance;
-    private static UserManagementController userManagement;
 
     @Override
     public void onEnable() {
         serverInstance = this;
-        userManagement = new UserManagementController();
-
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+        getServer().getPluginCommand("moneyup").setExecutor(new moneyup(this));
         // Plugin startup logic
 
     }
@@ -21,17 +20,12 @@ public final class Pokeserver extends JavaPlugin {
     @Override
     public void onDisable() {
         serverInstance = null;
-        userManagement = null;
+        saveConfig();
         // Plugin shutdown logic
     }
 
     public static Pokeserver getServerInstance(){
         return serverInstance;
     }
-
-    public static UserManagementController getUserManagement(){
-        return userManagement;
-    }
-
 
 }
