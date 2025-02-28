@@ -4,18 +4,15 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import ppookkjjqq.pokeserver.Pokeserver;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class moneyup implements CommandExecutor {
+public class moneyset implements CommandExecutor {
 
     Pokeserver plugin;
 
-    public moneyup(Pokeserver instance){
+    public moneyset(Pokeserver instance){
         plugin = instance;
     }
 
@@ -34,8 +31,7 @@ public class moneyup implements CommandExecutor {
                     List<Player> players = plugin.getServer().matchPlayer(strings[0]);
 
                     for (Player e : players){
-                        int money = plugin.getConfig().getInt(e.getName());
-                        plugin.getConfig().set(playername, money + amount);
+                        plugin.getConfig().set(playername, amount);
                         plugin.saveConfig();
                     }
                     return false;
