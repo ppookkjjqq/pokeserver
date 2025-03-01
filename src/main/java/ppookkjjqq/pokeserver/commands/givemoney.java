@@ -22,13 +22,15 @@ public class givemoney implements CommandExecutor {
         if (strings.length == 2){
             if (!plugin.getServer().matchPlayer(strings[0]).isEmpty()){
                 if (sendermoney >= Integer.parseInt(strings[1])) {
-                    int mount = Integer.parseInt(strings[1]);
-                    int receivermoney = plugin.getConfig().getInt(strings[0]);
+                    if (Integer.parseInt(strings[0]) > 0) {
+                        int mount = Integer.parseInt(strings[1]);
+                        int receivermoney = plugin.getConfig().getInt(strings[0]);
 
-                    plugin.getConfig().set(player.getName(), sendermoney - mount);
-                    plugin.getConfig().set(strings[0], receivermoney + mount);
-                    plugin.saveConfig();
-                    return false;
+                        plugin.getConfig().set(player.getName(), sendermoney - mount);
+                        plugin.getConfig().set(strings[0], receivermoney + mount);
+                        plugin.saveConfig();
+                        return false;
+                    }
                 }
             }
         }
