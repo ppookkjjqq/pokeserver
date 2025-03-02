@@ -4,6 +4,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import ppookkjjqq.pokeserver.commands.givemoney;
 import ppookkjjqq.pokeserver.commands.moneyset;
 import ppookkjjqq.pokeserver.commands.moneyup;
+import ppookkjjqq.pokeserver.commands.npcclickmanager;
+import ppookkjjqq.pokeserver.gui.testshopevent;
 
 public final class Pokeserver extends JavaPlugin {
 
@@ -19,6 +21,9 @@ public final class Pokeserver extends JavaPlugin {
         getServer().getPluginCommand("givemoney").setExecutor(new givemoney(this));
         scoreboardmanager scoreboardmanager = new scoreboardmanager(this);
         getServer().getPluginManager().registerEvents(new scoreboardlistener(scoreboardmanager,this), this);
+        getServer().getPluginManager().registerEvents(new npcclickmanager(),this);
+        getServer().getPluginManager().registerEvents(new testshopevent(this),this);
+
 
         // Plugin startup logic
 

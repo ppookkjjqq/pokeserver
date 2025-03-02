@@ -1,5 +1,6 @@
 package ppookkjjqq.pokeserver;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -17,8 +18,11 @@ public class scoreboardmanager {
         plugin = instance;
     }
 
-    public String time(){
-        long time = plugin.getServer().getWorld("world").getTime();
+    public String time(Player player){
+        if (player.getWorld() == null) {
+            return "월드 없음";  // 월드가 로드되지 않은 경우 예외 방지
+        }
+        long time = player.getWorld().getTime();
 
         if(time < 12300 || time > 23850){
             return "낮";
@@ -32,6 +36,7 @@ public class scoreboardmanager {
         int maxplayer = plugin.getServer().getMaxPlayers();
         int playernum = plugin.getServer().getOnlinePlayers().size();
         String biome =  player.getLocation().getBlock().getBiome().toString();
+
 
 
         ScoreboardManager manager = plugin.getServer().getScoreboardManager();
@@ -50,7 +55,7 @@ public class scoreboardmanager {
         Score s9 = objective.getScore("- " + playernum + "/" + maxplayer);
         Score s10 = objective.getScore(ChatColor.YELLOW+ "    ");
         Score s11 = objective.getScore(ChatColor.YELLOW + "▶ " + ChatColor.AQUA + ChatColor.BOLD + "현재 바이옴 및 시간");
-        Score s12 = objective.getScore("- " + biome + " " + time());
+        Score s12 = objective.getScore("- " + biome + " " + time(player));
         Score s13 = objective.getScore("==================");
 
         s1.setScore(13);

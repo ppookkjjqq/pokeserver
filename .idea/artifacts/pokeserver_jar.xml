@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="pokeserver:jar">
-    <output-path>E:/새 폴더 (2)/plugins</output-path>
+    <output-path>E:/새 폴더 (3)</output-path>
     <root id="archive" name="pokeserver.jar">
       <element id="module-output" name="pokeserver" />
     </root>

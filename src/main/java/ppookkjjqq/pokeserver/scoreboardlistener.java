@@ -14,6 +14,7 @@ public class scoreboardlistener implements Listener {
         this.plugin = plugin;
     }
 
+
     @EventHandler
     public void playerjoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
